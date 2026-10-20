@@ -99,5 +99,23 @@
   "registry": {
     "created_by": "skill-registry",
     "file": ".atl/skill-registry.md"
+  },
+  "agents": {
+    "created_by": "agent-instruction",
+    "files": [
+      "AGENTS.md",
+      "CLAUDE.md",
+      "OPENCODE.md"
+    ],
+    "reglas_aplicadas": [
+      "cero-dependencias-runtime",
+      "dom-seguro-textContent",
+      "logica-js-sin-dom",
+      "historial-inmutable",
+      "verificacion-antes-de-commit",
+      "abre-sin-npm-file-protocol",
+      "reglas-validables-con-tests",
+      "commits-y-push-por-hito"
+    ]
   }
 }
