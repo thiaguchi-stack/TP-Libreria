@@ -7,8 +7,12 @@
 
 ## Integrantes
 
-- **Apellido, Nombre:** [completar] — Legajo: [completar]
-- **Apellido, Nombre:** [completar] — Legajo: [completar]
+- **Apellido, Nombre: Oviedo, Thiago** — Legajo: [54137]
+- **Apellido, Nombre: Chacon, Facundo**  — Legajo: [53919]
+- **Apellido, Nombre: Monardez, Maximo**  — Legajo: [53907]
+- **Apellido, Nombre: Guillot, Tiago**  — Legajo: [53859]
+- **Apellido, Nombre: Mendez, Joaquin**  — Legajo: [54089]
+- **Apellido, Nombre: Ruiz, Matias**  — Legajo: [53956]
 
 ## Cómo abrir el proyecto (sin npm)
 
