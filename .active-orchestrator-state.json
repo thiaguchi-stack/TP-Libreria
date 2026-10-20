@@ -95,5 +95,9 @@
       }
     ],
     "installed": []
+  },
+  "registry": {
+    "created_by": "skill-registry",
+    "file": ".atl/skill-registry.md"
   }
 }
