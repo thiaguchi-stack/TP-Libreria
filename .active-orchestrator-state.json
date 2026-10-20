@@ -1,0 +1,9 @@
+{
+  "version": 4,
+  "step": "kb",
+  "owner": "active-orchestrator",
+  "discovery": {
+    "skipped": true,
+    "reason": "La consigna del parcial (Repaso Primer Parcial (1).pdf) ya define problema, alcance, reglas de negocio y casos de prueba; el usuario eligió ir directo a la Knowledge Base."
+  }
+}
