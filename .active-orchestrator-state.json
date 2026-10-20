@@ -47,5 +47,53 @@
       "C-10",
       "C-11"
     ]
+  },
+  "skills": {
+    "created_by": "find-skill",
+    "recommended": [
+      {
+        "name": "webapp-testing",
+        "source": "anthropics/skills",
+        "installs": "182.8K",
+        "url": "https://skills.sh/anthropics/skills/webapp-testing",
+        "why": "Guía para testear apps web estáticas en el navegador; se aplica directo al index.html y a los casos de prueba del parcial sin agregar ninguna dependencia runtime."
+      },
+      {
+        "name": "code-review",
+        "source": "mattpocock/skills",
+        "installs": "768.8K",
+        "url": "https://skills.sh/mattpocock/skills/code-review",
+        "why": "Herramienta de apoyo para revisar el JS nativo antes de entregar; no toca el runtime ni suma librerías al proyecto."
+      },
+      {
+        "name": "accessibility",
+        "source": "addyosmani/web-quality-skills",
+        "installs": "62.7K",
+        "url": "https://skills.sh/addyosmani/web-quality-skills/accessibility",
+        "why": "Audita HTML/CSS puro (ARIA, teclado, contraste) sobre las vistas del catálogo y los formularios de alta/venta; solo tooling de revisión."
+      },
+      {
+        "name": "web-design-guidelines",
+        "source": "vercel-labs/agent-skills",
+        "installs": "762.4K",
+        "url": "https://skills.sh/vercel-labs/agent-skills/web-design-guidelines",
+        "why": "Guías de diseño/revisión visual aplicables a CSS3 y HTML5 sin frameworks; aporta criterio de UI sin inyectar código al proyecto."
+      },
+      {
+        "name": "documentation-and-adrs",
+        "source": "addyosmani/agent-skills",
+        "installs": "59.5K",
+        "url": "https://skills.sh/addyosmani/agent-skills/documentation-and-adrs",
+        "why": "Ayuda a documentar decisiones y README alineado a la knowledge-base y a las decisiones técnicas del TPI; no afecta el runtime."
+      },
+      {
+        "name": "systematic-debugging",
+        "source": "obra/superpowers",
+        "installs": "301.5K",
+        "url": "https://skills.sh/obra/superpowers/systematic-debugging",
+        "why": "Metodología de depuración de causa raíz útil para bugs de lógica en JS nativo y persistencia en localStorage; puro proceso, cero dependencias."
+      }
+    ],
+    "installed": []
   }
 }
