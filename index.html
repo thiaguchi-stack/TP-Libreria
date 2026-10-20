@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librería El Coso</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Librería El Coso</h1>
+    <p class="bajada">Catálogo, libros, clientes y ventas</p>
+  </header>
+
+  <nav class="navegacion" aria-label="Navegación principal">
+    <ul>
+      <li><a href="#catalogo" data-vista="catalogo" class="activo">Catálogo</a></li>
+      <li><a href="#libros" data-vista="libros">Libros</a></li>
+      <li><a href="#clientes" data-vista="clientes">Clientes</a></li>
+      <li><a href="#ventas" data-vista="ventas">Ventas</a></li>
+      <li><a href="#historial" data-vista="historial">Historial</a></li>
+    </ul>
+  </nav>
+
+  <main class="contenido">
+
+    <!-- Vista: Catálogo -->
+    <section id="catalogo" class="vista activa" aria-labelledby="titulo-catalogo">
+      <h2 id="titulo-catalogo">Catálogo</h2>
+
+      <form id="form-busqueda" class="formulario formulario-inline" role="search">
+        <div class="campo">
+          <label for="buscar-titulo">Buscar por título</label>
+          <input type="search" id="buscar-titulo" name="buscar" placeholder="Ej.: cien años" autocomplete="off">
+        </div>
+        <div class="campo campo-acciones">
+          <button type="submit" class="boton">Buscar</button>
+          <button type="button" class="boton boton-secundario" id="btn-limpiar-busqueda">Limpiar búsqueda</button>
+        </div>
+      </form>
+
+      <p id="mensaje-catalogo" class="mensaje" role="status" aria-live="polite"></p>
+      <div id="listado-catalogo" class="rejilla" aria-live="polite"></div>
+    </section>
+
+    <!-- Vista: Libros -->
+    <section id="libros" class="vista" aria-labelledby="titulo-libros" hidden>
+      <h2 id="titulo-libros">Libros</h2>
+
+      <h3>Alta de libro</h3>
+      <form id="form-libro" class="formulario" novalidate>
+        <div class="campo">
+          <label for="libro-titulo">Título</label>
+          <input type="text" id="libro-titulo" name="titulo" required>
+        </div>
+        <div class="campo">
+          <label for="libro-isbn">ISBN</label>
+          <input type="text" id="libro-isbn" name="isbn" placeholder="Se compara sin espacios ni guiones" required>
+        </div>
+        <div class="campo">
+          <label for="libro-precio">Precio</label>
+          <input type="number" id="libro-precio" name="precio" min="0" step="0.01" required>
+        </div>
+        <div class="campo">
+          <label for="libro-editorial">Editorial</label>
+          <select id="libro-editorial" name="editorial" required></select>
+        </div>
+        <div class="campo">
+          <label for="libro-genero">Género</label>
+          <select id="libro-genero" name="genero"></select>
+        </div>
+        <div class="campo">
+          <label for="libro-autores">Autores (Ctrl/⌘ para seleccionar varios)</label>
+          <select id="libro-autores" name="autores" multiple size="5" required></select>
+        </div>
+
+        <div id="errores-libro" class="errores" role="alert" aria-live="assertive"></div>
+        <div class="campo-acciones">
+          <button type="submit" class="boton">Registrar libro</button>
+          <button type="reset" class="boton boton-secundario">Limpiar</button>
+        </div>
+      </form>
+      <p id="mensaje-libro" class="mensaje" role="status" aria-live="polite"></p>
+
+      <h3>Libros registrados</h3>
+      <div class="tabla-contenedor">
+        <table>
+          <caption>Listado de libros registrados</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Título</th>
+              <th scope="col">ISBN</th>
+              <th scope="col">Editorial</th>
+              <th scope="col">Género</th>
+              <th scope="col">Autores</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-libros"></tbody>
+        </table>
+      </div>
+      <p id="vacio-libros" class="vacio" hidden>No hay libros registrados.</p>
+    </section>
+
+    <!-- Vista: Clientes -->
+    <section id="clientes" class="vista" aria-labelledby="titulo-clientes" hidden>
+      <h2 id="titulo-clientes">Clientes</h2>
+
+      <h3>Alta de cliente</h3>
+      <form id="form-cliente" class="formulario" novalidate>
+        <div class="campo">
+          <label for="cliente-nombre">Nombre completo</label>
+          <input type="text" id="cliente-nombre" name="nombre" required>
+        </div>
+        <div class="campo">
+          <label for="cliente-email">Email</label>
+          <input type="email" id="cliente-email" name="email" placeholder="nombre@dominio.com" required>
+        </div>
+
+        <div id="errores-cliente" class="errores" role="alert" aria-live="assertive"></div>
+        <div class="campo-acciones">
+          <button type="submit" class="boton">Registrar cliente</button>
+          <button type="reset" class="boton boton-secundario">Limpiar</button>
+        </div>
+      </form>
+      <p id="mensaje-cliente" class="mensaje" role="status" aria-live="polite"></p>
+
+      <h3>Clientes registrados</h3>
+      <div class="tabla-contenedor">
+        <table>
+          <caption>Listado de clientes registrados</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre completo</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-clientes"></tbody>
+        </table>
+      </div>
+      <p id="vacio-clientes" class="vacio" hidden>No hay clientes registrados.</p>
+    </section>
+
+    <!-- Vista: Ventas -->
+    <section id="ventas" class="vista" aria-labelledby="titulo-ventas" hidden>
+      <h2 id="titulo-ventas">Nueva venta</h2>
+
+      <form id="form-venta-cliente" class="formulario formulario-inline" novalidate>
+        <div class="campo">
+          <label for="venta-cliente">Cliente</label>
+          <select id="venta-cliente" name="cliente" required></select>
+        </div>
+      </form>
+
+      <h3>Agregar renglón</h3>
+      <form id="form-renglon" class="formulario formulario-inline" novalidate>
+        <div class="campo">
+          <label for="renglon-libro">Libro</label>
+          <select id="renglon-libro" name="libro" required></select>
+        </div>
+        <div class="campo campo-cantidad">
+          <label for="renglon-cantidad">Cantidad</label>
+          <input type="number" id="renglon-cantidad" name="cantidad" min="1" step="1" value="1" required>
+        </div>
+        <div class="campo campo-acciones">
+          <button type="submit" class="boton">Agregar renglón</button>
+        </div>
+      </form>
+
+      <div id="errores-venta" class="errores" role="alert" aria-live="assertive"></div>
+      <p id="mensaje-venta" class="mensaje" role="status" aria-live="polite"></p>
+
+      <h3>Renglones de la venta</h3>
+      <div class="tabla-contenedor">
+        <table>
+          <caption>Renglones cargados en la venta en curso</caption>
+          <thead>
+            <tr>
+              <th scope="col">Libro</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio unitario</th>
+              <th scope="col">Subtotal</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-renglones"></tbody>
+        </table>
+      </div>
+      <p id="vacio-renglones" class="vacio">La venta no tiene renglones.</p>
+
+      <div class="resumen" id="resumen-venta">
+        <p>Total: <strong id="venta-total">$ 0,00</strong></p>
+        <div class="campo-acciones">
+          <button type="button" class="boton" id="btn-confirmar-venta">Confirmar venta</button>
+          <button type="button" class="boton boton-secundario" id="btn-cancelar-venta">Cancelar venta</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vista: Historial -->
+    <section id="historial" class="vista" aria-labelledby="titulo-historial" hidden>
+      <h2 id="titulo-historial">Historial de ventas</h2>
+
+      <div class="tabla-contenedor">
+        <table>
+          <caption>Ventas confirmadas</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Total</th>
+              <th scope="col">Detalle</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-ventas"></tbody>
+        </table>
+      </div>
+      <p id="vacio-ventas" class="vacio" hidden>No hay ventas registradas.</p>
+
+      <div id="detalle-venta" class="detalle" hidden>
+        <h3 id="detalle-titulo">Detalle de venta</h3>
+        <div class="tabla-contenedor">
+          <table>
+            <caption>Renglones de la venta seleccionada</caption>
+            <thead>
+              <tr>
+                <th scope="col">Libro</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio unitario</th>
+                <th scope="col">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-detalle"></tbody>
+          </table>
+        </div>
+        <p id="detalle-total"></p>
+        <div class="campo-acciones">
+          <button type="button" class="boton boton-secundario" id="btn-cerrar-detalle">Cerrar detalle</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>Programación III - Tecnicatura Universitaria en Programación a Distancia - TP frontend de librería</p>
+  </footer>
+
+  <script src="js/datos.js"></script>
+  <script src="js/logica.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
